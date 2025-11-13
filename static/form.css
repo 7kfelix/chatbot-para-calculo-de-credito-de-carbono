@@ -1,0 +1,28 @@
+@import url('style.css');
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.form-container {
+    width: 100%;
+}
+
+.form-container p {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--text-secondary);
+}
+
+.form-container p a {
+    color: var(--accent-purple);
+    text-decoration: none;
+}
+
+.form-container p a:hover {
+    text-decoration: underline;
+}

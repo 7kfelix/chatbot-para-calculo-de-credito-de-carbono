@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Pegada de Carbono</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+</head>
+<body>
+
+    <main class="main-content">
+        <!-- Header -->
+        <header id="chat-header">
+            <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+            <div class="header-title">Relatório de Carbono</div>
+            
+            <div class="user-menu">
+                <img 
+                    class="user-avatar" 
+                    src="{{ url_for('static', filename='uploads/avatars/' + current_user.profile_picture) }}" 
+                    alt="Avatar"
+                    onclick="toggleDropdown()"
+                >
+                
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <strong>{{ current_user.username }}</strong>
+                        <small>{{ current_user.email }}</small>
+                    </div>
+                    <a href="{{ url_for('main.profile') }}">👤 Perfil</a>
+                    <a href="{{ url_for('main.view_history') }}">📊 Histórico</a>
+                    <a href="{{ url_for('main.home') }}">💬 Chat</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ url_for('main.logout') }}" style="color: var(--accent-red);">🚪 Sair</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Report Container -->
+        <div class="report-wrapper">
+            <h2>🌱 Seu Relatório de Pegada de Carbono</h2>
+            
+            <!-- Chart Area -->
+            <div class="chart-area">
+                <canvas id="footprint-chart"></canvas>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-content">
+                        <h3>Total Mensal</h3>
+                        <p class="card-value" id="total-monthly">0 kg</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🌳</div>
+                    <div class="card-content">
+                        <h3>Árvores/Ano</h3>
+                        <p class="card-value" id="trees-yearly">0</p>
+                        <small>Para compensar</small>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h3>Compensação</h3>
+                        <p class="card-value" id="annual-cost">R$ 0</p>
+                        <small>Custo médio/ano</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Narrative Report -->
+            <div class="narrative-area">
+                <div id="narrative-report"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="{{ url_for('main.home') }}" class="back-button primary">
+                    ← Nova Conversa
+                </a>
+                <a href="{{ url_for('main.view_history') }}" class="back-button secondary">
+                    📊 Ver Histórico
+                </a>
+                <a href="{{ url_for('main.learn_more') }}" class="back-button info">
+                    📚 Saiba Mais
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Data JSON (hidden) -->
+    <script id="report-data" type="application/json">
+        {{ report_data | tojson | safe }}
+    </script>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='calculator.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
