@@ -2,16 +2,19 @@
 
 Este repositório contém o código-fonte de uma aplicação web desenvolvida como parte das Atividades Práticas Supervisionadas (APS) da UNIP.
 
-A aplicação é construída utilizando o framework **Flask** (Python) e parece integrar-se com as APIs de Inteligência Artificial do Google (possivelmente Gemini), com base na presença de uma `GOOGLE_API_KEY` no arquivo de configuração.
+## Feito por: João Victor Severiano Grama, Leticia Maria dos Santos Silva, Lucas Alves Pereira, Luigi Fernandes Leal, Matheus Lima Prates e Marcelo Felix do Vale
+
+A aplicação é construída utilizando o framework **Flask** (Python) e integra-se com as APIs de Inteligência Artificial do Google, com base na presença de uma `GOOGLE_API_KEY` no arquivo de configuração.
 
 ## 🛠️ Tecnologias Identificadas
 
-* **Backend:** Python
-* **Framework:** Flask (identificado pela presença de `flask.exe` no ambiente virtual) 
-* **APIs Externas:** Google AI (inferido pela `GOOGLE_API_KEY`) 
-* **Gerenciamento de Configuração:** `python-dotenv` (identificado por `.env` e `dotenv.exe`) 
-* **Ambiente:** `venv` (Ambiente Virtual Python) 
-* **Controle de Versão:** Git (identificado pelo arquivo `.gitignore`) 
+* **Backend:** Python, JavaScript
+* **Framework:** Flask
+* **APIs Externas:** Google AI
+* **Gerenciamento de Configuração:** `python-dotenv`
+* **Ambiente:** `venv`
+* **Controle de Versão:** Git
+* **Frontend:** HTML e CSS
 
 ## ⚙️ Configuração e Instalação
 
@@ -61,9 +64,47 @@ SECRET_KEY='sua_chave_secreta_aqui'
 GOOGLE_API_KEY='sua_google_api_key_aqui'
 ```
 
-## 6. Executar a Aplicação
-
 Com o ambiente virtual ativado, execute o Flask:
 ```bash
 python app.py
 ```
+
+---------------------------------------------------------------------------------------
+### Caso tenha dúvidas de como extrair a sua chave de API do Google, siga esses passos:
+O processo é gratuito e feito através do **Google AI Studio**.
+
+### 1. Acesse o Google AI Studio
+
+Abra seu navegador e vá para o site oficial:
+
+* **[https://aistudio.google.com](https://aistudio.google.com)**
+
+Você precisará fazer login com sua conta pessoal do Google (a mesma que você usa para o Gmail, por exemplo).
+
+### 2. Crie sua Chave de API
+
+1.  Após entrar no painel principal, procure no menu à esquerda pela opção **"Get API key"** (Obter chave de API) e clique nela.
+    
+2.  Você será levado para a página de "API keys". Clique no botão **"Create API key"** (Criar chave de API).
+
+3.  Será solicitado que você selecione um projeto do Google Cloud para associar a chave.
+    * **Se você já tem um projeto:** Selecione-o na lista.
+    * **Se é sua primeira vez:** O sistema geralmente se oferece para criar um novo projeto para você automaticamente. Apenas siga as instruções na tela.
+
+### 3. Copie e Guarde sua Chave
+
+Assim que a chave for criada, ela aparecerá na sua lista. Será uma longa sequência de letras e números, como `AIzaSy...`.
+
+1.  Clique no ícone de "Copiar" ao lado da chave para copiá-la para sua área de transferência.
+    
+2.  **IMPORTANTE:** Trate essa chave como uma senha! Não a compartilhe publicamente.
+
+### 4. Adicione a Chave ao Projeto
+
+Agora, você precisa "avisar" o nosso projeto qual é a sua chave.
+
+1.  Encontre (ou crie) o arquivo `.env` na pasta raiz do projeto (na mesma pasta que o `app.py`).
+2.  Abra este arquivo e adicione ou edite a linha da `GOOGLE_API_KEY`:
+3.  Substitua `sua_google_api_key_aqui` pela chave que você acabou de copiar.
+4.  Salve o arquivo.
+---------------------------------------------------------------------------------------
